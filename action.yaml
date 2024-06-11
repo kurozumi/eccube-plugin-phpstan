@@ -1,5 +1,5 @@
 name: 'PHPStan for EC-CUBE Plugin'
-description: ''
+description: 'PHPStan'
 branding:
   icon: check
   color: green

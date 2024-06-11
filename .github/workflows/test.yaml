@@ -69,7 +69,7 @@ jobs:
           ref: '4.2'
           path: 'plugin'
 
-      - uses: kurozumi/eccube-plugin-phpstan@main
+      - uses: kurozumi/eccube-plugin-phpstan@v1
         with:
           plugin-directory: 'plugin'
           plugin-code: ${{ env.PLUGIN_CODE }}
