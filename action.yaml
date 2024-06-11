@@ -45,6 +45,7 @@ runs:
       working-directory: ${{ inputs.plugin-directory }}
       run: |
         tar cvzf ${GITHUB_WORKSPACE}/${{ inputs.plugin-code }}.tar.gz ./*
+        cp ${GITHUB_WORKSPACE}/${{ inputs.plugin-code }}.tar.gz /tmp/repos/${{ inputs.plugin-code }}.tgz
       shell: bash
 
     - name: Setup PHP, with composer and extensions
