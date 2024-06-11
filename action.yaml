@@ -13,6 +13,9 @@ inputs:
   plugin-code:
     description: ''
     required: true
+  plugin-package-name:
+    description: ''
+    required: true
   eccube-versions:
     description: ''
     required: true

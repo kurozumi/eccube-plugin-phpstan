@@ -11,7 +11,7 @@ env:
   PLUGIN_PACKAGE_NAME: 'ec-cube/resizeimage42'
 
 jobs:
-  test:
+  phpstan:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
