@@ -1,0 +1,1 @@
+# eccube-plugin-phpstan
