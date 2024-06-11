@@ -1,16 +1,13 @@
-# eccube-plugin-phpstan
-
-## Usage
-
-```yaml
-name: PHPStan test for EC-CUBE
+name: PHPStan for EC-CUBE Plugin
 
 on:
+  #  push:
+  #    branches: [ main ]
   pull_request:
   workflow_dispatch:
 
 env:
-  PLUGIN_CODE: plugin-code
+  PLUGIN_CODE: ResizeImage42
 
 jobs:
   test:
@@ -63,11 +60,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
 
-      - uses: kurozumi/eccube-plugin-phpsran@v1
+      - name: Checkout plugin
+        uses: actions/checkout@v4
         with:
+          repository: kurozumi/ResizeImage4
+          ref: '4.2'
+          path: 'plugin'
+
+      - uses: kurozumi/eccube-plugin-phpstan@main
+        with:
+          plugin-directory: 'plugin'
           plugin-code: ${{ env.PLUGIN_CODE }}
           eccube-versions: ${{ matrix.eccube-versions }}
           php-versions: ${{ matrix.php-versions }}
