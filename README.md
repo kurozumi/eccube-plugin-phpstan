@@ -11,6 +11,7 @@ on:
 
 env:
   PLUGIN_CODE: plugin-code
+  PLUGIN_PACKAGE_NAME: 'eccube/plugin-package-name'
 
 jobs:
   test:
@@ -69,6 +70,7 @@ jobs:
       - uses: kurozumi/eccube-plugin-phpsran@v1
         with:
           plugin-code: ${{ env.PLUGIN_CODE }}
+          plugin-package-name: ${{ env.PLUGIN_PACKAGE_NAME }}
           eccube-versions: ${{ matrix.eccube-versions }}
           php-versions: ${{ matrix.php-versions }}
           database-url: ${{ matrix.database_url }}

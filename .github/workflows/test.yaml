@@ -8,6 +8,7 @@ on:
 
 env:
   PLUGIN_CODE: ResizeImage42
+  PLUGIN_PACKAGE_NAME: 'eccube/resizeimage42'
 
 jobs:
   test:
@@ -72,6 +73,7 @@ jobs:
         with:
           plugin-directory: 'plugin'
           plugin-code: ${{ env.PLUGIN_CODE }}
+          plugin-package-name: ${{ env.PLUGIN_PACKAGE_NAME }}
           eccube-versions: ${{ matrix.eccube-versions }}
           php-versions: ${{ matrix.php-versions }}
           database-url: ${{ matrix.database_url }}
