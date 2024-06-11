@@ -8,7 +8,7 @@ on:
 
 env:
   PLUGIN_CODE: ResizeImage42
-  PLUGIN_PACKAGE_NAME: 'eccube/resizeimage42'
+  PLUGIN_PACKAGE_NAME: 'ec-cube/resizeimage42'
 
 jobs:
   test:

@@ -11,7 +11,7 @@ on:
 
 env:
   PLUGIN_CODE: plugin-code
-  PLUGIN_PACKAGE_NAME: 'eccube/plugin-package-name'
+  PLUGIN_PACKAGE_NAME: 'ec-cube/plugin-package-name'
 
 jobs:
   test:
