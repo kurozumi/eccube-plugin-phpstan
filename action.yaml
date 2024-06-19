@@ -16,8 +16,6 @@ inputs:
   plugin-package-name:
     description: ''
     required: true
-  plugin-enable:
-    description: ''
   eccube-versions:
     description: ''
     required: true
@@ -35,6 +33,10 @@ inputs:
     required: true
   command:
     description: ''
+    default: ''
+  dependent-plugins-enable:
+    description: ''
+    default: ''
 
 runs:
   using: 'composite'
@@ -105,11 +107,13 @@ runs:
         DATABASE_CHARSET: ${{ matrix.database_charset }}
       shell: bash
 
-    - name: Install plugin
+    - name: Setup plugin
       working-directory: ${{ inputs.working-directory }}
       run: |
         bin/console eccube:composer:require ${{ inputs.plugin-package-name }}
         bin/console cache:clear --no-warmup
+        ${{ inputs.dependent-plugins-enable }}
+        bin/console eccube:plugin:enable --code ${{ inputs.plugin-code }}
       env:
         APP_ENV: 'test'
         APP_DEBUG: 0
@@ -118,22 +122,6 @@ runs:
         DATABASE_CHARSET: ${{ inputs.database-charset }}
         ECCUBE_PACKAGE_API_URL: 'http://127.0.0.1:8080'
         USE_SELFSIGNED_SSL_CERTIFICATE: '1'
-      shell: bash
-
-    - name: Enable plugin
-      working-directory: ${{ inputs.working-directory }}
-      run: |
-        if [ ${{ inputs.plugin-enable }} = '' ]; then
-          bin/console eccube:plugin:enable --code ${{ inputs.plugin-code }}
-        else
-          ${{ inputs.plugin-enable }} 
-        fi
-      env:
-        APP_ENV: 'test'
-        APP_DEBUG: 0
-        DATABASE_URL: ${{ inputs.database-url }}
-        DATABASE_SERVER_VERSION: ${{ inputs.database-server-version }}
-        DATABASE_CHARSET: ${{ inputs.database-charset }}
       shell: bash
 
     - name: PHPStan
