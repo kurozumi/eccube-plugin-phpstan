@@ -16,6 +16,9 @@ inputs:
   plugin-package-name:
     description: ''
     required: true
+  plugin-archive:
+    description: ''
+    default: 'true'
   eccube-versions:
     description: ''
     required: true
@@ -48,6 +51,7 @@ runs:
       shell: bash
 
     - name: Archive Plugin
+      if: ${{ inputs.plugin-archive == 'true' }}
       working-directory: ${{ inputs.plugin-directory }}
       run: |
         tar cvzf ${GITHUB_WORKSPACE}/${{ inputs.plugin-code }}.tar.gz ./*
