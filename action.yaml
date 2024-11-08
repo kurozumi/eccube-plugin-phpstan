@@ -40,6 +40,9 @@ inputs:
   dependency-plugins-enable:
     description: ''
     default: ''
+  composer-version:
+    description: ''
+    default: 'composer2'
 
 runs:
   using: 'composite'
@@ -47,7 +50,7 @@ runs:
     - name: Setup mock-package-api
       run: |
         mkdir -p /tmp/repos
-        docker run --name package-api -d -v /tmp/repos:/repos -e MOCK_REPO_DIR=/repos -p 8080:8080 eccube/mock-package-api:composer2
+        docker run --name package-api -d -v /tmp/repos:/repos -e MOCK_REPO_DIR=/repos -p 8080:8080 eccube/mock-package-api:${{ inputs.composer-version }}
       shell: bash
 
     - name: Archive Plugin
