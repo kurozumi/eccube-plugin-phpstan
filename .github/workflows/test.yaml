@@ -1,8 +1,8 @@
 name: PHPStan for EC-CUBE Plugin
 
 on:
-  #  push:
-  #    branches: [ main ]
+  push:
+    branches: [ main ]
   pull_request:
   workflow_dispatch:
 
