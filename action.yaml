@@ -120,5 +120,5 @@ runs:
       working-directory: ${{ inputs.working-directory }}
       run: |
         composer require phpstan/phpstan --dev
-        ./vendor/bin/phpstan analyze app/Plugin/${{ inputs.plugin-code }} -c "app/Plugin/${{ inputs.plugin-code }}/phpstan.neon" --error-format=github
+        ./vendor/bin/phpstan analyze app/Plugin/${{ inputs.plugin-code }} -c "phpstan.neon.dist" --error-format=github
       shell: bash
