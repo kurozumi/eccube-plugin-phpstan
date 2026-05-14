@@ -119,6 +119,6 @@ runs:
     - name: PHPStan
       working-directory: ${{ inputs.working-directory }}
       run: |
-        composer require phpstan/phpstan --dev
+        composer require phpstan/phpstan --dev --no-scripts
         ./vendor/bin/phpstan analyze app/Plugin/${{ inputs.plugin-code }} -c "app/Plugin/${{ inputs.plugin-code }}/phpstan.neon" --error-format=github
       shell: bash
